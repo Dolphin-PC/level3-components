@@ -1,12 +1,25 @@
 import * as S from "@/styles/index.style";
 
 const ButtonTemplate = () => {
+  const handleAlert = (str: string): void => {
+    alert(str);
+  };
+
+  const handleConfirm = (str: string): void => {
+    window.prompt(str);
+  };
+
   return (
     <div>
       <h1>Button</h1>
 
       <S.row.Row>
-        <S.button.Button $size="large" $color="primary" $outline>
+        <S.button.Button
+          $size="large"
+          $color="primary"
+          $outline
+          onClick={() => handleAlert("Large Primary Button")}
+        >
           <S.button.InnerDiv>
             Large Primary Button
             <svg
@@ -35,7 +48,12 @@ const ButtonTemplate = () => {
       </S.row.Row>
 
       <S.row.Row>
-        <S.button.Button $size="large" $color="negative" $outline>
+        <S.button.Button
+          $size="large"
+          $color="negative"
+          $outline
+          onClick={() => handleConfirm("Large Negative Button")}
+        >
           <S.button.InnerDiv>
             Large Negative Button
             <svg
