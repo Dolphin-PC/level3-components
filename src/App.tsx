@@ -1,12 +1,17 @@
-import { Button, Input, Modal, Select } from "./components";
+import {
+  ButtonTemplate,
+  InputTemplate,
+  ModalTemplate,
+  SelectTemplate,
+} from "./components/template";
 
 function App() {
   return (
     <>
-      <Button />
-      <Input />
-      <Modal />
-      <Select />
+      <ButtonTemplate />
+      <InputTemplate />
+      <ModalTemplate />
+      <SelectTemplate />
     </>
   );
 }
