@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import styled from "styled-components";
 import ModalOverLay from "../atom/ModalOverLay";
 import ModalContent from "../atom/ModalContent";
 import GreenModalButton from "../atom/ModalButton";
-// import { ModalOverLay } from "./atom/ModalOverLay";
-
+import * as S from "../styles/styles";
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -26,7 +24,7 @@ const CreateGreenModal: React.FC<ModalProps> = ({
     <ModalOverLay>
       <ModalContent>
         {children}
-        <Buttonbox>
+        <S.Buttonbox>
           <GreenModalButton
             color={[214, 48, 49]}
             backColor={[250, 177, 160]}
@@ -41,17 +39,10 @@ const CreateGreenModal: React.FC<ModalProps> = ({
           >
             Confirm
           </GreenModalButton>
-        </Buttonbox>
+        </S.Buttonbox>
       </ModalContent>
     </ModalOverLay>,
     modalRoot
   );
 };
 export default CreateGreenModal;
-
-const Buttonbox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  gap: 10px;
-`;

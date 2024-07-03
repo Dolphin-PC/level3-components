@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import styled from "styled-components";
+// import styled from "styled-components";
 import ModalContent from "../atom/ModalContent";
 import ModalOverLay from "../atom/ModalOverLay";
+import * as S from "../styles/styles";
 
 interface ModalProps {
   isOpen: boolean;
@@ -26,7 +27,7 @@ const CreateRedModal: React.FC<ModalProps> = ({
     <ModalOverLay onClick={onClose}>
       <ModalContent>
         {children}
-        <CloseButton onClick={onClose}>
+        <S.CloseButton onClick={onClose}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -42,7 +43,7 @@ const CreateRedModal: React.FC<ModalProps> = ({
               d="M6 18 18 6M6 6l12 12"
             />
           </svg>
-        </CloseButton>
+        </S.CloseButton>
       </ModalContent>
     </ModalOverLay>,
     modalRoot
@@ -50,13 +51,13 @@ const CreateRedModal: React.FC<ModalProps> = ({
 };
 export default CreateRedModal;
 
-const CloseButton = styled.button`
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  border: none;
-  cursor: pointer;
-  border-radius: 50%;
-  background-color: rgb(158, 156, 156);
-  padding: 8px 10px;
-`;
+// const CloseButton = styled.button`
+//   position: absolute;
+//   right: 10px;
+//   top: 10px;
+//   border: none;
+//   cursor: pointer;
+//   border-radius: 50%;
+//   background-color: rgb(158, 156, 156);
+//   padding: 8px 10px;
+// `;
