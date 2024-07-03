@@ -13,9 +13,9 @@ export const Button = styled.button<StyleProps>`
   cursor: pointer;
   border-style: solid;
 
-  ${({ $size: size = "medium" }) => sizeStyles[size]};
-  ${({ $color: color = "primary" }) =>
-    color === "primary" ? primaryStyles : negativeStyles};
+  ${({ $size = "medium" }) => sizeStyles[$size]};
+  ${({ $color = "primary" }) =>
+    $color === "primary" ? primaryStyles : negativeStyles};
 
   ${({ $outline: outline }) => outline && outlineStyles};
 `;
