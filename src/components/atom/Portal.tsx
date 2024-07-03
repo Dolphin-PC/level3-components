@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 
-const modalRoot = document.getElementById("portal-target");
+const modalRoot = document.getElementById("Sef");
 
 type TProps = {
   isOpen: boolean;
@@ -24,11 +24,11 @@ const Portal = ({ isOpen, children }: TProps) => {
 export default Portal;
 
 const Overlay = styled.div`
-  position: fixed;
-  top: 0;
+  position: absolute;
+  /* top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 0; */
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;

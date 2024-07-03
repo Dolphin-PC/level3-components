@@ -19,6 +19,7 @@ export const SelectButton = styled.button`
     background-color: rgb(255, 255, 255);
     border-radius: 12px;
     margin-bottom: 10px;
+    position:relative;
 
     
 `
