@@ -7,9 +7,8 @@ type StyleProps = {
 };
 
 export const Button = styled.button<StyleProps>`
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 8px;
+  font-weight: 600;
 
   cursor: pointer;
   border-style: solid;
@@ -19,6 +18,13 @@ export const Button = styled.button<StyleProps>`
     color === "primary" ? primaryStyles : negativeStyles};
 
   ${({ $outline: outline }) => outline && outlineStyles};
+`;
+
+export const InnerDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
 `;
 
 const largeStyles = css`

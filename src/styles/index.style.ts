@@ -1,2 +1,2 @@
-export { Button } from "./button.style";
-export { Row } from "./row.style";
+export * as button from "./button.style";
+export * as row from "./row.style";
