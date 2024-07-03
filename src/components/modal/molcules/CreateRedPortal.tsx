@@ -34,7 +34,7 @@ const CreateRedModal: React.FC<ModalProps> = ({
             strokeWidth={1.5}
             stroke="currentColor"
             className="size-6"
-            width={'15px'}
+            width={"15px"}
           >
             <path
               strokeLinecap="round"
@@ -50,14 +50,13 @@ const CreateRedModal: React.FC<ModalProps> = ({
 };
 export default CreateRedModal;
 
-
 const CloseButton = styled.button`
   position: absolute;
   right: 10px;
-  top:10px;
+  top: 10px;
   border: none;
   cursor: pointer;
   border-radius: 50%;
   background-color: rgb(158, 156, 156);
-  padding: 15px 17px;
+  padding: 8px 10px;
 `;

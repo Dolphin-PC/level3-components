@@ -3,10 +3,10 @@ import styled from "styled-components";
 interface ModalProps {
   children: React.ReactNode;
 }
-const StopProp = (evnet:React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+const StopProp = (evnet: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
   evnet.stopPropagation();
 };
-const ModalContent:React.FC<ModalProps> = ({children}) => {
+const ModalContent: React.FC<ModalProps> = ({ children }) => {
   return <Modalcontent onClick={StopProp}>{children}</Modalcontent>;
 };
 
@@ -20,4 +20,5 @@ const Modalcontent = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  position: relative;
 `;

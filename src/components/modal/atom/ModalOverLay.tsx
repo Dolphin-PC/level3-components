@@ -6,11 +6,11 @@ interface ModalProps {
   children: React.ReactNode;
 }
 
-const ModalOverLay:React.FC<ModalProps> = ({children,...props}) => {
-  return <ModalOverlay {...props} >{children}</ModalOverlay>;
+const ModalOverLay: React.FC<ModalProps> = ({ children, ...props }) => {
+  return <ModalOverlay {...props}>{children}</ModalOverlay>;
 };
 
-export default ModalOverLay
+export default ModalOverLay;
 const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
