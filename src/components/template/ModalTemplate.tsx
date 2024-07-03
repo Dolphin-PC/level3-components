@@ -1,9 +1,27 @@
-import React from "react";
+import * as S from "@/styles/index.style";
+import { useState } from "react";
+import Portal from "../atom/Portal";
 
 const ModalTemplate = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   return (
-    // 이곳에 Modal 컴포넌트를 추가하세요.
-    <div>ModalTemplate</div>
+    <>
+      <h1>Modal</h1>
+
+      <S.button.Button onClick={openModal}>open modal</S.button.Button>
+      <Portal isOpen={isModalOpen} onClose={closeModal}>
+        <h2>Modal Title</h2>
+        <p>This is a modal content.</p>
+      </Portal>
+    </>
   );
 };
 
