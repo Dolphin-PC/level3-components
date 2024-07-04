@@ -1,0 +1,6 @@
+1. S dot 패턴
+ (1) styles/ 파일 생성
+ (2) index.style.ts 안에 (1)에서 만든 파일 연결
+ (3) 활용
+   - (2)의 index 파일 import
+   
