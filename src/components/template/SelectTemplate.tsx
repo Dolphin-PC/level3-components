@@ -8,12 +8,20 @@ const SelectTemplate = () => {
   const [selected, setSelected] = useState<number>(0);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const ref = useRef<HTMLDivElement>();
+  const [selected2, setSelected2] = useState<number>(0);
+  const [isOpen2, setIsOpen2] = useState<boolean>(false);
+
+  const ref = useRef<HTMLButtonElement>(null);
+  const ref2 = useRef<HTMLButtonElement>(null);
 
   const handleClickOutside = (event) => {
     if (ref.current && !ref.current.contains(event.target)) {
       // event.target => 화면의 누른 곳
       setIsOpen(false); // 상태 초기화
+    }
+    if (ref2.current && !ref2.current.contains(event.target)) {
+      // event.target => 화면의 누른 곳
+      setIsOpen2(false); // 상태 초기화
     }
   };
 
@@ -26,50 +34,51 @@ const SelectTemplate = () => {
     };
   }, []);
 
-  useEffect(() => {
-    console.log({ selected });
-  }, [selected]);
+  // useEffect(() => {
+  //   console.log({ selected });
+  // }, [selected]);
 
+  // react 라이프사이클 -> render -> componentDidMount (useEffect(), [])
   return (
     <>
       <S.select.SelectBox>
         <h1>Select</h1>
         <S.select.SelectButtonBox>
           <S.select.SelectButton
-              ref={ref}
-              id ="Sef"
-              onClick={() => setIsOpen((prev) => !prev)}
-            >
-              <p>{list[selected]}</p>
-              <p>▼</p>
-            </S.select.SelectButton>
-            <Portal isOpen={isOpen}>
-              <S.select.SelectList>
-                  {list.map((item, index) => {
-                    console.log({ item, index });
-                    return (
-                      <S.select.ListButton
-                        key={item}
-                        onMouseDown={() => {
-                          setSelected(+index);
-                          setIsOpen(false);
-                        }}
-                      >
-                        {item}
-                      </S.select.ListButton>
-                    );
-                  })}
-                </S.select.SelectList>
-            </Portal>
+            ref={ref}
+            id="Sef"
+            onClick={() => setIsOpen((prev) => !prev)}
+          >
+            <p>{list[selected]}</p>
+            <p>▼</p>
+          </S.select.SelectButton>
+          <Portal isOpen={isOpen} btnRef={ref}>
+            <S.select.SelectList>
+              {list.map((item, index) => {
+                // console.log({ item, index });
+                return (
+                  <S.select.ListButton
+                    key={item}
+                    onMouseDown={() => {
+                      setSelected(+index);
+                      setIsOpen(false);
+                    }}
+                  >
+                    {item}
+                  </S.select.ListButton>
+                );
+              })}
+            </S.select.SelectList>
+          </Portal>
           <div>
             <S.select.SelectButton
-              ref={ref}
-              onClick={() => setIsOpen((prev) => !prev)}
+              ref={ref2}
+              onClick={() => setIsOpen2((prev) => !prev)}
             >
-              <p>{list[selected]}</p>
+              <p>{list[selected2]}</p>
               <p>▼</p>
             </S.select.SelectButton>
-            {isOpen && (
+            {isOpen2 && (
               <S.select.SelectList>
                 {list.map((item, index) => {
                   console.log({ item, index });
@@ -77,8 +86,8 @@ const SelectTemplate = () => {
                     <S.select.ListButton
                       key={item}
                       onMouseDown={() => {
-                        setSelected(+index);
-                        setIsOpen(false);
+                        setSelected2(+index);
+                        setIsOpen2(false);
                       }}
                     >
                       {item}
