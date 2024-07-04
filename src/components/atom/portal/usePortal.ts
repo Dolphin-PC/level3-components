@@ -1,5 +1,5 @@
-import { useCallback, useEffect } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useEffect } from "react";
+import { useSetRecoilState } from "recoil";
 import { portalOpenState, portalState } from "./atom";
 
 interface Option {

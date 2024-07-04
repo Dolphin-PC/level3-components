@@ -24,7 +24,7 @@ export const portalState = atomFamily<PortalState, string>({
   },
 });
 
-export const portalOpenState = selectorFamily({
+export const portalOpenState = selectorFamily<boolean, string>({
   key: "portalOpenState",
   get:
     (portalStateId: string) =>

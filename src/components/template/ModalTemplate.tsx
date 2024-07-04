@@ -3,6 +3,10 @@ import { useRef } from "react";
 import Portal from "../atom/portal/Portal";
 import usePortal from "../atom/portal/usePortal";
 
+// recoil - atomFamily
+// hooks - usePortal
+// component - Portal
+
 const ModalTemplate = () => {
   const ref = useRef<HTMLButtonElement>(null);
   const modal1 = usePortal("modal1", {
