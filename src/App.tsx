@@ -1,3 +1,4 @@
+import { RecoilRoot } from "recoil";
 import {
   ButtonTemplate,
   InputTemplate,
@@ -10,8 +11,10 @@ function App() {
     <>
       <ButtonTemplate />
       <InputTemplate />
-      <ModalTemplate />
-      <SelectTemplate />
+      <RecoilRoot>
+        <ModalTemplate />
+        <SelectTemplate />
+      </RecoilRoot>
     </>
   );
 }
