@@ -40,6 +40,7 @@ background-color: rgb(255, 255, 255);
 border: 1px solid rgb(244, 244, 244);
 overflow: hidden;
 border-radius: 15px;
+width :300px;
 `
 
 export const ListButton = styled.div`

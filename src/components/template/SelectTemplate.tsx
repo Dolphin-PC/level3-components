@@ -1,5 +1,5 @@
 import * as S from "@/styles/index.style";
-import Button from "../atom/Button";
+// import Button from "../atom/Button";
 import { useState, useRef, useEffect } from "react";
 import Portal from "../atom/Portal";
 const list: string[] = ["React", "Java", "Spring", "React Native"];
@@ -37,6 +37,7 @@ const SelectTemplate = () => {
         <S.select.SelectButtonBox>
           <S.select.SelectButton
               ref={ref}
+              id ="Sef"
               onClick={() => setIsOpen((prev) => !prev)}
             >
               <p>{list[selected]}</p>
@@ -60,7 +61,7 @@ const SelectTemplate = () => {
                   })}
                 </S.select.SelectList>
             </Portal>
-          {/* <div>
+          <div>
             <S.select.SelectButton
               ref={ref}
               onClick={() => setIsOpen((prev) => !prev)}
@@ -86,7 +87,7 @@ const SelectTemplate = () => {
                 })}
               </S.select.SelectList>
             )}
-          </div> */}
+          </div>
         </S.select.SelectButtonBox>
       </S.select.SelectBox>
     </>
