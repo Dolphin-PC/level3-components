@@ -1,7 +1,8 @@
-import * as S from "@/styles/index.style";
 import { useRef } from "react";
-import Portal from "../atom/portal/Portal";
-import usePortal from "../atom/portal/usePortal";
+import * as S from "@/styles/index.style";
+import Portal from "@/components/atom/portal/Portal";
+import usePortal from "@/components/atom/portal/usePortal";
+import { Button } from "@/styles/button.style";
 
 // recoil - atomFamily
 // hooks - usePortal
@@ -37,6 +38,18 @@ const ModalTemplate = () => {
           <Portal portalStateId="modal1">
             <h2>Modal Title2222222222</h2>
             <p>This is a modal content.</p>
+            <S.row.Row>
+              <Button
+                $size="small"
+                $color="negative"
+                onClick={modal1.closeModal}
+              >
+                Close
+              </Button>
+              <Button $size="small" $color="primary">
+                confirm
+              </Button>
+            </S.row.Row>
           </Portal>
         </section>
 
@@ -52,6 +65,15 @@ const ModalTemplate = () => {
           <Portal portalStateId="modal2">
             <h2>Modal Title2222222222</h2>
             <p>This is a modal content.</p>
+            <S.row.Row>
+              <Button
+                $size="small"
+                $color="negative"
+                onClick={modal2.closeModal}
+              >
+                Close
+              </Button>
+            </S.row.Row>
           </Portal>
         </section>
 
@@ -62,13 +84,18 @@ const ModalTemplate = () => {
           <Portal portalStateId="modal3">
             <h2>Modal Title2222222222</h2>
             <p>This is a modal content.</p>
-            <S.button.Button
-              $size="small"
-              $color="negative"
-              onClick={modal3.closeModal}
-            >
-              Close
-            </S.button.Button>
+            <S.row.Row>
+              <Button
+                $size="small"
+                $color="negative"
+                onClick={modal3.closeModal}
+              >
+                Close
+              </Button>
+              <Button $size="small" $color="primary">
+                confirm
+              </Button>
+            </S.row.Row>
           </Portal>
         </section>
 
@@ -84,13 +111,15 @@ const ModalTemplate = () => {
           <Portal portalStateId="modal4">
             <h2>Modal Title2222222222</h2>
             <p>This is a modal content.</p>
-            <S.button.Button
-              $size="small"
-              $color="negative"
-              onClick={modal4.closeModal}
-            >
-              Close
-            </S.button.Button>
+            <S.row.Row>
+              <Button
+                $size="small"
+                $color="negative"
+                onClick={modal4.closeModal}
+              >
+                Close
+              </Button>
+            </S.row.Row>
           </Portal>
         </section>
       </S.row.Row>

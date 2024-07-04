@@ -11,12 +11,12 @@ interface Option {
   ref?: React.RefObject<HTMLElement> | null;
 }
 const usePortal = (portalStateId: string, option: Option) => {
-  //* re-render방지
+  //* re-render방지 :: recoil state를 받게 되면, re-render가 발생됨
   const setPortal = useSetRecoilState(portalState(portalStateId));
   const setIsPortalOpen = useSetRecoilState(portalOpenState(portalStateId));
 
   useEffect(() => {
-    // state 초기값 설정
+    //* state 초기값 설정 :: render이후 ref가 설정되기 때문에 useEffect 사용 (componentDidMount)
     setPortal((prev) => {
       return {
         ...prev,
@@ -31,6 +31,7 @@ const usePortal = (portalStateId: string, option: Option) => {
       const top = 10 + (rect?.top || 0) + (rect?.height || 0) + window.scrollY;
       const left = (rect?.left || 0) + window.scrollX;
 
+      //* setter가 2번 실행(배치)될 수 있기에, prev를 사용하여 변경된 값을 설정
       setPortal((prev) => {
         return {
           ...prev,
