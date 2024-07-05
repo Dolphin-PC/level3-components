@@ -1,72 +1,60 @@
-import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import styled from "styled-components";
+import { portalOpenState, portalState } from "../../Atom_Store/atom";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useEffect, useRef } from "react";
+import * as S from "@/styles/index.style";
 
 const modalRoot = document.getElementById("portal-target");
 
-type TProps = {
-  isOpen: boolean;
+interface Props {
+  portalStateId: string;
   children: React.ReactNode;
-  btnRef: React.RefObject<HTMLButtonElement> | null;
-};
+}
 
-const Portal = ({ isOpen, children, btnRef }: TProps) => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+const Portal = ({ children, portalStateId }: Props) => {
+  const portal = useRecoilValue(portalState(portalStateId));
+  const setIsOpenPortal = useSetRecoilState(portalOpenState(portalStateId));
+  const portalRef = useRef<HTMLDivElement>(null);
 
+  const { isOpen, position, isRelative, isBackDrop } = portal;
+
+  //* isBackDroup==false && portal 본문에 해당하지 않는 부분 클릭 시, portal 닫힘
   useEffect(() => {
-    if (btnRef === null || btnRef.current == null) return;
-    const rect = btnRef.current.getBoundingClientRect();
+    const handleOutsideClick = (e: MouseEvent) => {
+      if (portalRef.current && !portalRef.current.contains(e.target as Node)) {
+        setIsOpenPortal(false);
+      }
+    };
+    if (isBackDrop == false) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [isBackDrop, setIsOpenPortal]);
 
-    if (rect === null) return;
+  const PortalSection = () => {
+    if (isRelative) {
+      const { left, top } = position;
+      return (
+        <S.button.RelativeModalSection ref={portalRef} $top={top} $left={left}>
+          {children}
+        </S.button.RelativeModalSection>
+      );
+    }
 
-    // console.log({ rect });
+    return (
+      <S.button.Overlay>
+        <S.button.selectModalSection ref={portalRef}>
+          {children}
+        </S.button.selectModalSection>
+      </S.button.Overlay>
+    );
+  };
 
-    const { x, y, height } = rect;
-
-    // y + height + 10 : 버튼 아래의 10px 여백
-    setPosition({ x: x, y: y + height + 10 });
-  }, []);
-
-  if (!isOpen) {
-    return null;
-  }
-
-  return ReactDOM.createPortal(
-    <RelativModalSection $top={position.y} $left={position.x}>
-      {children}
-    </RelativModalSection>,
-    modalRoot as Element
+  return (
+    isOpen && ReactDOM.createPortal(<PortalSection />, modalRoot as Element)
   );
 };
 
 export default Portal;
-
-const Overlay = styled.div`
-  position: absolute;
-  /* top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0; */
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const ModalSection = styled.div`
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-`;
-
-interface RelativeModalSectionProps {
-  $top: number;
-  $left: number;
-}
-
-const RelativModalSection = styled(ModalSection)<RelativeModalSectionProps>`
-  position: fixed;
-  top: ${({ $top }) => `${$top}px`};
-  left: ${({ $left }) => `${$left}px`};
-`;

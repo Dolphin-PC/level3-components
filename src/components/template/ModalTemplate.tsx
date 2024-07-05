@@ -1,11 +1,7 @@
 import * as S from "@/styles/index.style";
 import { useRef } from "react";
-import Portal from "../atom/portal/Portal";
-import usePortal from "../atom/portal/usePortal";
-
-// recoil - atomFamily
-// hooks - usePortal
-// component - Portal
+import Portal from "../atom/Portal";
+import usePortal from "../../hooks/usePortal";
 
 const ModalTemplate = () => {
   const ref = useRef<HTMLButtonElement>(null);
