@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import { portalOpenState, portalState } from "../../Atom_Store/atom";
+import { portalOpenState, portalState } from "./atom";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { useEffect, useRef } from "react";
 import * as S from "@/styles/index.style";
@@ -45,9 +45,9 @@ const Portal = ({ children, portalStateId }: Props) => {
 
     return (
       <S.button.Overlay>
-        <S.button.selectModalSection ref={portalRef}>
+        <S.button.ModalSection ref={portalRef}>
           {children}
-        </S.button.selectModalSection>
+        </S.button.ModalSection>
       </S.button.Overlay>
     );
   };

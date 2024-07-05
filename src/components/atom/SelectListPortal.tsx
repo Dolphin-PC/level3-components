@@ -10,7 +10,7 @@ type TProps = {
   btnRef: React.RefObject<HTMLButtonElement> | null;
 };
 
-const Portal = ({ isOpen, children, btnRef }: TProps) => {
+const SelectListPortal = ({ isOpen, children, btnRef }: TProps) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -30,11 +30,11 @@ const Portal = ({ isOpen, children, btnRef }: TProps) => {
   }
 
   return ReactDOM.createPortal(
-    <S.button.RelativModalSection $top={position.y} $left={position.x}>
+    <S.select.RelativModalSection $top={position.y} $left={position.x}>
       {children}
-    </S.button.RelativModalSection>,
+    </S.select.RelativModalSection>,
     modalRoot as Element
   );
 };
 
-export default Portal;
+export default SelectListPortal ;

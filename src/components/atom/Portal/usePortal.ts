@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
-import { portalOpenState, portalState } from "../Atom_Store/atom";
+import { portalOpenState, portalState } from "./atom";
 
 interface Option {
   /** portal 이 아닌 곳 클릭시, 닫힘 여부 */

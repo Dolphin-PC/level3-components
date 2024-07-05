@@ -1,8 +1,7 @@
 import * as S from "@/styles/index.style";
 import { useState, useRef, useEffect } from "react";
-import Portal from "../atom/SelectPortal";
-import Button from "../molcules/Button";
 import SelectList from "../molcules/SelectList";
+import SelectListPortal from "../atom/SelectListPortal";
 const list: string[] = ["React", "Java", "Spring", "React Native"];
 const SelectTemplate = () => {
   // state => 조건부 렌더링 => div 열고 닫히는 => isOpen
@@ -39,25 +38,30 @@ const SelectTemplate = () => {
       <S.select.SelectBox>
         <h1>Select</h1>
         <S.select.SelectButtonBox>
-          <Button
-            value={list[selected]}
+          <S.select.SelectButton
             ref={ref}
             id="Sef"
             onClick={() => setIsOpen((prev) => !prev)}
-          ></Button>
-          <Portal isOpen={isOpen} btnRef={ref}>
+          >
+            <p>{list[selected]}</p>
+            <p>▼</p>
+          </S.select.SelectButton>
+          <SelectListPortal isOpen={isOpen} btnRef={ref}>
             <SelectList
               list={list}
               setSelected={setSelected}
               setIsOpen={setIsOpen}
             />
-          </Portal>
+          </SelectListPortal>
           <div>
-            <Button
+            <S.select.SelectButton
               value={list[selected2]}
               ref={ref2}
               onClick={() => setIsOpen2((prev) => !prev)}
-            ></Button>
+            >
+              <p>{list[selected2]}</p>
+              <p>▼</p>
+            </S.select.SelectButton>
             {isOpen2 && (
               <SelectList
                 list={list}

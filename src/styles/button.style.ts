@@ -64,22 +64,6 @@ const outlineStyles = css`
   border-width: 3px;
 `;
 
-export const selectModalSection = styled.div`
-  background-color: white;
-  border-radius: 15px;
-`;
-
-interface RelativeModalSectionProps {
-  $top: number;
-  $left: number;
-}
-
-export const RelativModalSection = styled(selectModalSection)<RelativeModalSectionProps>`
-  position: fixed;
-  top: ${({ $top }) => `${$top}px`};
-  left: ${({ $left }) => `${$left}px`};
-`;
-
 
 
 export const Overlay = styled.div`

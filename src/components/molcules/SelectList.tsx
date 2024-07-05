@@ -13,21 +13,21 @@ const SelectList: React.FC<SelectListProps> = ({
   setIsOpen,
 }) => {
   return (
-    <S.select.SelectList>
-      {list.map((item, index) => {
-        return (
-          <S.select.ListButton
-            key={item}
-            onMouseDown={() => {
-              setSelected(+index);
-              setIsOpen(false);
-            }}
-          >
-            {item}
-          </S.select.ListButton>
-        );
-      })}
-    </S.select.SelectList>
+      <S.select.SelectList>
+        {list.map((item, index) => {
+          return (
+            <S.select.ListButton
+              key={item}
+              onMouseDown={() => {
+                setSelected(+index);
+                setIsOpen(false);
+              }}
+            >
+              {item}
+            </S.select.ListButton>
+          );
+        })}
+      </S.select.SelectList>
   );
 };
 
