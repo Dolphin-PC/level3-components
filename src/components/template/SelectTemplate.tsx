@@ -15,11 +15,11 @@ const SelectTemplate = () => {
   const ref2 = useRef<HTMLButtonElement>(null);
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (ref.current && !ref.current.contains(event.target)) {
+    if (ref.current && !ref.current.contains(event.target as Element)) {
       // event.target => 화면의 누른 곳
       setIsOpen(false); // 상태 초기화
     }
-    if (ref2.current && !ref2.current.contains(event.target)) {
+    if (ref2.current && !ref2.current.contains(event.target as Element)) {
       // event.target => 화면의 누른 곳
       setIsOpen2(false); // 상태 초기화
     }
